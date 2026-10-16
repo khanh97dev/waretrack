@@ -31,6 +31,18 @@ npx serve .
 python3 -m http.server 8000
 ```
 
+Or run it in a container (Podman or Docker) on port 2222:
+
+```bash
+podman run -d --name wavetrack \
+  -p 2222:80 \
+  -v "$PWD":/usr/share/nginx/html:ro,Z \
+  docker.io/library/nginx:alpine
+```
+
+then open <http://localhost:2222/>. See [docs/self-hosting.md](docs/self-hosting.md)
+for the full self-hosting guide.
+
 ## Features
 
 - **Warehouse simulation:** trucks queue at the gate, back into docks and unload. Forklifts route through aisles, lift to rack levels, charge their batteries, and pick orders to outbound staging.
