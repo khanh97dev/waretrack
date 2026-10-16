@@ -13,7 +13,7 @@ container is just the most repeatable way to do that.
 From the repository root:
 
 ```bash
-podman run -d --name wavetrack \
+podman run -d --name waretrack \
   -p 2222:80 \
   -v "$PWD":/usr/share/nginx/html:ro,Z \
   docker.io/library/nginx:alpine
@@ -36,7 +36,7 @@ game writes nothing to disk — all progress is kept in the browser's
 The same command works with Docker; only the `:Z` flag is meaningless there:
 
 ```bash
-docker run -d --name wavetrack \
+docker run -d --name waretrack \
   -p 2222:80 \
   -v "$PWD":/usr/share/nginx/html:ro \
   nginx:alpine
@@ -57,18 +57,18 @@ docker run -d --name wavetrack \
 
 | Task | Command |
 | --- | --- |
-| Status | `podman ps --filter name=wavetrack` |
-| Logs | `podman logs wavetrack` |
-| Stop | `podman stop wavetrack` |
-| Start again | `podman start wavetrack` |
-| Remove | `podman rm -f wavetrack` |
+| Status | `podman ps --filter name=waretrack` |
+| Logs | `podman logs waretrack` |
+| Stop | `podman stop waretrack` |
+| Start again | `podman start waretrack` |
+| Remove | `podman rm -f waretrack` |
 
 To keep the site up across reboots, recreate the container with a restart
 policy:
 
 ```bash
-podman rm -f wavetrack
-podman run -d --name wavetrack --restart=always \
+podman rm -f waretrack
+podman run -d --name waretrack --restart=always \
   -p 2222:80 \
   -v "$PWD":/usr/share/nginx/html:ro,Z \
   docker.io/library/nginx:alpine
@@ -82,7 +82,7 @@ nothing to rebuild or restart unless you want to be sure caches are dropped:
 
 ```bash
 git pull
-podman restart wavetrack
+podman restart waretrack
 ```
 
 If the browser still shows the old version, hard-reload (Ctrl/Cmd+Shift+R);

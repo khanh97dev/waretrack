@@ -34,7 +34,7 @@ python3 -m http.server 8000
 Or run it in a container (Podman or Docker) on port 2222:
 
 ```bash
-podman run -d --name wavetrack \
+podman run -d --name waretrack \
   -p 2222:80 \
   -v "$PWD":/usr/share/nginx/html:ro,Z \
   docker.io/library/nginx:alpine
