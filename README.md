@@ -10,6 +10,25 @@ Everything lives in a single file, `index.html`. It uses [three.js r128](https:/
   <a href="https://siddik-web.github.io/waretrack/"><img src="docs/media/preview.gif" alt="WareTrack gameplay: trucks dock, forklifts put pallets away, and order requests pop up during a shift" width="900"></a>
 </p>
 
+## Quasar/Vue version (`app/`)
+
+The original single-file game stays untouched in `index.html`. A full Quasar v2 + Vue 3 + Pinia port lives in `app/`:
+
+- Same three.js r128 engine and gameplay, now bundled with Vite (`three` is pinned to 0.128.0).
+- All 3D/DOM-heavy work (`app/src/game/engine.js`) is nearly verbatim from the original; it pushes snapshots into a Pinia store (`app/src/stores/game.js`) every 0.4 s, and every panel is a Vue component (`app/src/components/`). Panels whose original renderer builds HTML (inspector, panel tabs, shipment tracking, menu pages) keep that exact markup and are rendered with `v-html`.
+- English and Vietnamese UI via vue-i18n (`app/src/i18n/`): Vietnamese by default; switch with the EN/VI button in the top bar or the picker on the menu tab row. The choice is remembered in the browser. The engine builds its HUD text with `t()`/`tn()`; each part of the engine has its own message file in `app/src/i18n/parts/`.
+- State → Pinia, every HUD panel/modal → Quasar/Vue; original CSS is copied verbatim into `app/src/css/app.css`; `quasar.reset.css` undoes Quasar's global typography/box-sizing so it renders exactly like the original.
+
+```bash
+cd app
+npm install
+npm run dev      # Vite dev server
+npm run build    # production build in app/dist
+npm run preview
+```
+
+> The original `index.html` remains the reference implementation. The port was checked side by side against it in headless Chrome (layout of every HUD card, menu tabs, shift report, build and town modes, inspector, dropdowns) with no console errors.
+
 ## Screenshots
 
 | | |

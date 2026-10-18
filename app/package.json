@@ -1,0 +1,26 @@
+{
+  "name": "waretrack-quasar",
+  "private": true,
+  "version": "3.0.0",
+  "type": "module",
+  "description": "WareTrack logistics game — Quasar v2 (Vue 3 + Pinia + three.js)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.9",
+    "pinia": "^2.1.7",
+    "quasar": "^2.16.0",
+    "three": "0.128.0",
+    "vue": "^3.4.27",
+    "vue-i18n": "^10.0.5"
+  },
+  "devDependencies": {
+    "@quasar/vite-plugin": "^1.7.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.77.4",
+    "vite": "^5.2.11"
+  }
+}

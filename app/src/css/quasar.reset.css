@@ -1,0 +1,14 @@
+/* Quasar's normalize/typography change global element styles (border-box everywhere,
+   Material heading sizes, p margins, body line-height). The game's CSS was written
+   against browser defaults, so restore those here (loaded after Quasar, before app.css)
+   and keep border-box only inside Quasar's own widgets. */
+html,body,*,*::before,*::after{box-sizing:revert}
+:is(.q-tabs,.q-toggle,.q-slider,.q-badge,.q-btn,.q-dialog,.q-notifications,.q-field,.q-separator),
+:is(.q-tabs,.q-toggle,.q-slider,.q-badge,.q-btn,.q-dialog,.q-notifications,.q-field) *{box-sizing:border-box}
+body{line-height:normal;min-width:0;min-height:0}
+h1,h2,h3,h4,h5,h6{font-weight:bold;line-height:normal;letter-spacing:normal}
+h1{font-size:2em}h2{font-size:1.5em}h3{font-size:1.17em}h4{font-size:1em}h5{font-size:.83em}h6{font-size:.67em}
+p{margin:1em 0}
+small{font-size:smaller}
+code,kbd,pre,samp{font-family:monospace;font-size:inherit}
+button,input,optgroup,select,textarea{font:revert;margin:revert;text-transform:revert}
